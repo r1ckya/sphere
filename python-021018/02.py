@@ -17,7 +17,7 @@ def solution5(n):
         c = (a ** 2 + b ** 2) ** 0.5
         return c <= n and int(c) == c
     
-    return [(x, y, (x ** 2 + y ** 2) ** 0.5) for x in range(1, n + 1) for y in range(x, n + 1) if check(x, y)]
+    return [(x, y, int((x ** 2 + y ** 2) ** 0.5)) for x in range(1, n + 1) for y in range(x, n + 1) if check(x, y)]
 
 def solution6(a):
     return [list(map(lambda x: x + y, a[1])) for y in a[0]]
