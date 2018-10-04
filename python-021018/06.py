@@ -9,6 +9,6 @@ if __name__ == '__main__':
     for line in stdin.readlines():
         for n in map(int, line.split()):
             for x in binominal(n):
-                print(x, end=' ')
+                print(x, end=' ', sep=' ')
             print()
 
