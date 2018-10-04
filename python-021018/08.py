@@ -15,47 +15,39 @@ class BinarySearchTree:
     def left(self):
         return self._left
 
-    @left.setter
-    def left(self, other):
-        self._left = other
-
     @property
     def right(self):
         return self._right
 
-    @right.setter
-    def right(self, other):
-        self._right = other
-
     def empty(self):
-        return self.value is None
+        return self._value is None
 
     def append(self, value):
         if self.empty():
             self._value = value
             return
 
-        if value < self.value:
-            if self.left is None:
-                self.left = type(self)(value)
+        if value < self._value:
+            if self._left is None:
+                self._left = type(self)(value)
             else:
-                self.left.append(value)
+                self._left.append(value)
         else:
-            if self.right is None:
-                self.right = type(self)(value)
+            if self._right is None:
+                self._right = type(self)(value)
             else:
-                self.right.append(value)
+                self._right.append(value)
 
     def __contains__(self, value):
         if self.empty():
             return False
 
-        if value == self.value:
+        if value == self._value:
             return True
-        elif value < self.value:
-            return self.left.__contains__(value) if self.left else False
+        elif value < self._value:
+            return self._left.__contains__(value) if self._left is not None else False
         else:
-            return self.right.__contains__(value) if self.right else False
+            return self._right.__contains__(value) if self._right is not None else False
 
     def __iter__(self):
         if self.empty():
@@ -66,11 +58,11 @@ class BinarySearchTree:
 
         while len(queue) > 0:
             cur = queue.popleft()
-            yield cur.value
-            if cur.left:
-                queue.append(cur.left)
-            if cur.right:
-                queue.append(cur.right)
+            yield cur._value
+            if cur._left:
+                queue.append(cur._left)
+            if cur._right:
+                queue.append(cur._right)
 
 
 if __name__ == '__main__':
